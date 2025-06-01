@@ -9,9 +9,18 @@ export default function Home() {
         <Image
           className="dark:invert"
           src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_16x9.jpg?w=1200"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          alt="cat pic"
+          width={280}
+          height={100}
+          priority
+        />
+
+        <Image
+          className="dark:invert"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/960px-Cat_August_2010-4.jpg"
+          alt="cat pic"
+          width={280}
+          height={100}
           priority
         />
      

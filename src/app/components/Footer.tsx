@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
               <FaEnvelope />
             </a>
           </div>
-          <p className="text-sm">Email: info@example.com</p>
+          <p className="text-sm">Email: robtoribio04@gmail.com</p>
           <p className="text-sm">Phone: +1 (123) 456-7890</p>
         </div>
       </div>

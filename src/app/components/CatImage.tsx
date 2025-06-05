@@ -1,11 +1,25 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import{FaHeart, FaTimes} from 'react-icons/fa'
+
 interface CatImageProps{
     catId ?:number;
 }
 const CatImage: React.FC<CatImageProps> = ({catId}) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [votedStatus,setVotedStatus] = useState<'liked'|'disliked'|null>(null);
+
+  /***
+   * method for handling the voting action
+   */
+  const handleVote=(type:'liked'|'disliked')=>{
+    if(votedStatus)return;
+
+    setVotedStatus(type);
+    // Log the vote to the console. In a real application, you would send this to a backend API.
+    console.log(`${type === 'liked' ? 'Liked' : 'Disliked'} image ID: ${image.id}`);
+  }
 
   useEffect(() => {
     // Access the environment variable
@@ -55,11 +69,37 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
   }
 
   return (
-    <div>
-      <h2 className='Apple font-bold'>Number: {catId+1}</h2>
+    <div className="flex-col justify-center items-center">
+      <h2 className='Apple font-bold'>Number: {catId}</h2>
       <img src={imageUrl} alt="A cute cat" style={{ maxWidth: '75%', height: 'auto' }}
        className='rounded-2xl relative w-full h-auto overflow-hidden border-2 border-gray-300
        ease-in-out hover:scale-105 hover:shadow-xl' />
+
+          {/* Voting Buttons Container */}
+             <div className="flex gap-6  justify-center">
+               {/* Dislike Button */}
+               <button
+                 // Tailwind classes for button styling: padding, rounded, shadow, text color, hover effects, transitions, etc.
+                 // `enabled:hover:scale-110` scales up only if the button is not disabled.
+                 // `disabled:opacity-50 disabled:cursor-not-allowed` styles when the button is disabled.
+                 className="p-3 rounded-full bg-white shadow-md text-gray-500 text-3xl hover:bg-gray-50 hover:text-gray-700 transition-all duration-200 enabled:hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                 onClick={() => handleVote('disliked')}
+                 disabled={votedStatus !== null} // Disable button if a vote has already been cast
+                 aria-label={`Dislike image ID ${catId}`} // Accessibility label for screen readers
+               >
+                 <FaTimes /> {/* 'X' icon from react-icons */}
+               </button>
+       
+               {/* Like Button */}
+               <button
+                 className="p-3 rounded-full bg-white shadow-md text-red-500 text-3xl hover:bg-red-50 hover:text-red-600 transition-all duration-200 enabled:hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                 onClick={() => handleVote('liked')}
+                 disabled={votedStatus !== null} // Disable button if a vote has already been cast
+                 aria-label={`Like image ID ${catId}`} // Accessibility label for screen readers
+               >
+                 <FaHeart /> {/* Heart icon from react-icons */}
+               </button>
+             </div>
     </div>
   );
 };

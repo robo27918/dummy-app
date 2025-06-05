@@ -1,9 +1,10 @@
 
 import Image from "next/image";
-import CatImage from "./components/CatImg";
+import CatImage from "./components/CatImage";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav"
 import NavBar from "./components/NavBar";
+import ImageCard from "./components/ImageCard";
 export default function Home() {
   const imageCount = 60;
   const images = Array.from({length:imageCount})
@@ -12,7 +13,7 @@ export default function Home() {
       <NavBar></NavBar>
           <div className="flex flex-col  p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
               <main className="items-center">
-                <div className="grid grid-cols-4 gap-4">{images.map((_,index)=>(<CatImage key={index}/>))}</div>
+                <div className="grid grid-cols-4 gap-4">{images.map((_,index)=>(<CatImage catId={index}/>))}</div>
             </main>
           </div>
     <Footer/>

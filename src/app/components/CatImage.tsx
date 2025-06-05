@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 interface CatImageProps{
-    catId ?:string;
+    catId ?:number;
 }
 const CatImage: React.FC<CatImageProps> = ({catId}) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -56,7 +56,7 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
 
   return (
     <div>
-      <h2 className='Apple font-bold'>Cat#{catId}</h2>
+      <h2 className='Apple font-bold'>Number: {catId+1}</h2>
       <img src={imageUrl} alt="A cute cat" style={{ maxWidth: '75%', height: 'auto' }}
        className='rounded-2xl relative w-full h-auto overflow-hidden border-2 border-gray-300
        ease-in-out hover:scale-105 hover:shadow-xl' />

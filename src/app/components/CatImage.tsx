@@ -1,14 +1,16 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import{FaHeart, FaTimes} from 'react-icons/fa'
-
+import {v4 as uuidv4} from 'uuid';
 interface CatImageProps{
-    catId ?:number;
+    catId ?:string;
 }
 const CatImage: React.FC<CatImageProps> = ({catId}) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [votedStatus,setVotedStatus] = useState<'liked'|'disliked'|null>(null);
+  const [fallbackId] = useState(()=>uuidv4());
+  const actualCatId = catId ?? fallbackId;
 
   /***
    * method for handling the voting action
@@ -70,7 +72,7 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
 
   return (
     <div className="flex-col justify-center items-center">
-      <h2 className='Apple font-bold'>Number: {catId}</h2>
+      <h2 className='Apple font-bold'>Number: {actualCatId}</h2>
       <img src={imageUrl} alt="A cute cat" style={{ maxWidth: '75%', height: 'auto' }}
        className='rounded-2xl relative w-full h-auto overflow-hidden border-2 border-gray-300
        ease-in-out hover:scale-105 hover:shadow-xl' />
@@ -85,7 +87,7 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
                  className="p-3 rounded-full bg-white shadow-md text-gray-500 text-3xl hover:bg-gray-50 hover:text-gray-700 transition-all duration-200 enabled:hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
                  onClick={() => handleVote('disliked')}
                  disabled={votedStatus !== null} // Disable button if a vote has already been cast
-                 aria-label={`Dislike image ID ${catId}`} // Accessibility label for screen readers
+                 aria-label={`Dislike image ID ${actualCatId}`} // Accessibility label for screen readers
                >
                  <FaTimes /> {/* 'X' icon from react-icons */}
                </button>
@@ -95,7 +97,7 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
                  className="p-3 rounded-full bg-white shadow-md text-red-500 text-3xl hover:bg-red-50 hover:text-red-600 transition-all duration-200 enabled:hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
                  onClick={() => handleVote('liked')}
                  disabled={votedStatus !== null} // Disable button if a vote has already been cast
-                 aria-label={`Like image ID ${catId}`} // Accessibility label for screen readers
+                 aria-label={`Like image ID ${actualCatId}`} // Accessibility label for screen readers
                >
                  <FaHeart /> {/* Heart icon from react-icons */}
                </button>

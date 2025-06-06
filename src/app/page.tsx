@@ -4,7 +4,7 @@ import CatImage from "./components/CatImage";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav"
 import NavBar from "./components/NavBar";
-import ImageCard from "./components/ImageCard";
+
 export default function Home() {
   const imageCount = 60;
   const images = Array.from({length:imageCount})

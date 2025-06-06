@@ -18,7 +18,7 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
 
     setVotedStatus(type);
     // Log the vote to the console. In a real application, you would send this to a backend API.
-    console.log(`${type === 'liked' ? 'Liked' : 'Disliked'} image ID: ${image.id}`);
+    console.log(`${type === 'liked' ? 'Liked' : 'Disliked'} image ID: ${catId}`);
   }
 
   useEffect(() => {

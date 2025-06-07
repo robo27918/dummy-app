@@ -15,10 +15,29 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
   /***
    * method for handling the voting action
    */
-  const handleVote=(type:'liked'|'disliked')=>{
+  const handleVote= async (type:'liked'|'disliked')=>{
     if(votedStatus)return;
 
     setVotedStatus(type);
+    try{
+       const res = await fetch('/api/like',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body:JSON.stringify({
+          imageUrl,
+          title:"Cat image"
+        }),
+      });
+
+      const data = await res.json();
+      if(!res.ok) throw new Error(data.error|| 'Failed to like image');
+      console.log("Liked saved:",data);
+    }
+    catch(error){
+      console.error("Error liking image:",error);
+    }
     // Log the vote to the console. In a real application, you would send this to a backend API.
     console.log(`${type === 'liked' ? 'Liked' : 'Disliked'} image ID: ${catId}`);
   }

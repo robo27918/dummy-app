@@ -20,6 +20,7 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
 
     setVotedStatus(type);
     try{
+        let imageId = catId;
        const res = await fetch('/api/like',{
         method:'POST',
         headers:{
@@ -27,7 +28,8 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
         },
         body:JSON.stringify({
           imageUrl,
-          title:"Cat image"
+          imageId,
+         
         }),
       });
 
@@ -39,7 +41,9 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
       console.error("Error liking image:",error);
     }
     // Log the vote to the console. In a real application, you would send this to a backend API.
+
     console.log(`${type === 'liked' ? 'Liked' : 'Disliked'} image ID: ${catId}`);
+    console.log("imageUrl",imageUrl)
   }
 
   useEffect(() => {

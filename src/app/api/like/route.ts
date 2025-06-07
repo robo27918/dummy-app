@@ -38,7 +38,7 @@ export async function POST(req:Request){
                 },
             });
         }
-
+        console.log("session email f")
         //get the user from DB: NEON
         const user = await prisma.user.findUnique({
             where:{email:session.user.email}
@@ -48,11 +48,11 @@ export async function POST(req:Request){
             return NextResponse.json({error:"User not found"}, {status:404})
         }
         //create a like if it doesnt already exits
-        const like = await prisma.like.upset({
+        const like = await prisma.like.upsert({
             where:{
-                userId_image_id:{
+                userId_imageId:{
                     userId: user.id,
-                    imageId: image.id,
+                    imageId: imageId,
                 },
             },
             update:{},//do nothing if it already exits
@@ -63,7 +63,7 @@ export async function POST(req:Request){
         });
         return NextResponse.json({message:"Image liked",like});
     }catch(error){
-        console.error("Error liking iamge", error);
+        console.error("Error liking image...", error);
         return NextResponse.json({error: 'Internal Server Error'},{status:500})
     }
 }

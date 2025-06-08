@@ -2,6 +2,7 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from 'next/link';
 
 export default function NavBar() {
   const { data: session, status } = useSession();
@@ -9,7 +10,7 @@ export default function NavBar() {
   return (
     <nav className="flex items-center justify-between p-4 bg-gray-800 text-white">
       <div className="text-lg font-bold">My App</div>
-
+      <Link href="/liked">My Liked Images</Link>
       {status === "loading" ? (
         <div>Loading...</div>
       ) : session ? (

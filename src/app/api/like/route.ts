@@ -4,16 +4,32 @@ import {authOptions} from '../../lib/auth';
 import {prisma} from '../../lib/prisma';
 
 export async function GET(req:NextRequest){
-    const session = await getServerSession(authOptions);
+    try{
+        const session = await getServerSession(authOptions);
 
-    if(!session || !session.user?.email){
-        return NextResponse.json({error:"Unauthorized"},{status:401});
+        if(!session || !session.user?.email){
+            return NextResponse.json({error:"Unauthorized"},{status:401});
+        }
+
+        // const {searchParams} = new URL(req.url);
+        // const userId = searchParams.get('userId')
+
+        let likes;
+        //Fetch the likes based on the authenticated user's ID
+        likes = await prisma.like.findMany({
+            where:{
+                user:session?.user,
+            }
+        })
+        console.log("likes",likes);
+        return NextResponse.json(likes,{status:200});
+    }catch(error){
+        console.error("Error fetching likes",error);
+        return NextResponse.json(
+            {message:'Internal Server Error'},
+            {status:500}
+        );
     }
-
-    const {searchParams} = new URL(req.url);
-    const userId = searchParams.get('userId')
-
-    console.log("userId", userId)
 }
 export async function POST(req:Request){
     const session = await getServerSession(authOptions);

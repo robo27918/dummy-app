@@ -1,11 +1,17 @@
 'use client'
 import React,{useEffect, useState} from 'react';
 import {useSession} from 'next-auth/react';
+import Image from 'next/image';
 
 interface Like{
     id:string;
     userId:string;
     createdAt: string;
+    image:{
+        id:string;
+        url:string;
+        title?:string;
+    };
 }
 
 const LikeDisplay: React.FC= ()=>{
@@ -69,8 +75,13 @@ const LikeDisplay: React.FC= ()=>{
             <ul className='space-y-2'>
                 {
                     likes.map((like)=>(
-                        <li key={like.id} className='bg-gray-100 p-3 rounded shadow-sm'>
-                            Like ID: {like.id} (Liked on: {new Date(like.createdAt).toLocaleDateString()})
+                        <li key={like.id}>
+                            <Image
+                                src={like.image.url}
+                                alt={'Image'}
+                                width={300}
+                                height={300}
+                            />
                         </li>
                     ))
                 }

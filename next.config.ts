@@ -6,7 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns:[
       {protocol:'https', hostname:'i.natgeofe.com'},
       {protocol:'https', hostname:'upload.wikimedia.org'},
-      {protocol:'https', hostname:'lh3.googleusercontent.com'}
+      {protocol:'https', hostname:'lh3.googleusercontent.com'},
+      {protocol:'https',hostname:'cdn2.thecatapi.com'}
+
 
     ]
     

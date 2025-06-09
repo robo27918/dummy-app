@@ -19,6 +19,15 @@ export async function GET(req:NextRequest){
         likes = await prisma.like.findMany({
             where:{
                 user:session?.user,
+                
+            },
+            include:{
+                image:{
+                    select:{
+                        id:true,
+                        url:true,
+                    }
+                }
             }
         })
         console.log("likes",likes);

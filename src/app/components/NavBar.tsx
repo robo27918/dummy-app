@@ -10,6 +10,7 @@ export default function NavBar() {
   return (
     <nav className="flex items-center justify-between p-4 bg-gray-800 text-white">
       <div className="text-lg font-bold">My App</div>
+      <Link href="/">Gallery</Link>
       <Link href="/liked">My Liked Images</Link>
       {status === "loading" ? (
         <div>Loading...</div>

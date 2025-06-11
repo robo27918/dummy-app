@@ -72,17 +72,21 @@ const LikePage: React.FC= ()=>{
     return(
         <div className='border-red-500 flex flex-col  p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
                 <h2 className='text-2xl font-bold mb-4'>Your likes</h2>
-                <div className='grid grid-cols gap-4'>
+                <div className='grid grid-cols-4 gap-4'>
                     {
                         likes.map((like)=>(
-                            // <div key={like.id}>
+                            <div key={like.id}>
                                 <Image
                                     src={like.image.url}
                                     alt={'Image'}
-                                    width={300}
-                                    height={300}
-                                    className='border-2'
+                                    width={750}
+                                    height={750}
+                                    className='rounded-2xl relative w-full
+                                    h-auto overflow-hidden border-2 border-gray-300
+                                    ease-in-out hover:scale-105 hover:shadow-xl
+                                    max-w-[75%] h-auto'
                                 />
+                            </div>
                             
                         ))
                     }

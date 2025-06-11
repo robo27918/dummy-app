@@ -27,7 +27,7 @@ export default async function LikedImagesPage() {
           <div className="flex flex-col  p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
               <main className="items-center">
                
-                  <LikePage></LikePage>
+                  <LikePage></LikePage> 
                 
             </main>
           </div>

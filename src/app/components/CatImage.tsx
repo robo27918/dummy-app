@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import{FaHeart, FaTimes} from 'react-icons/fa'
 import {v4 as uuidv4} from 'uuid';
+import Modal from './Modal';
 interface CatImageProps{
     catId ?:string;
 }
@@ -9,6 +10,7 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [votedStatus,setVotedStatus] = useState<'liked'|'disliked'|null>(null);
+  const [isModalOpen,setIsModalOpen] = useState(false);
   const [fallbackId] = useState(()=>uuidv4());
   const actualCatId = catId ?? fallbackId;
 
@@ -98,7 +100,12 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
       <h2 className='Apple font-bold'>Number: {actualCatId}</h2>
       <img src={imageUrl} alt="A cute cat" style={{ maxWidth: '75%', height: 'auto' }}
        className='rounded-2xl relative w-full h-auto overflow-hidden border-2 border-gray-300
-       ease-in-out hover:scale-105 hover:shadow-xl' />
+       ease-in-out hover:scale-105 hover:shadow-xl' 
+       onClick={()=>setIsModalOpen(true)}/>
+
+       <Modal className="max-w-[1200px] max-h-[85vh]" isOpen={isModalOpen} onClose={()=> setIsModalOpen(false)}>
+        <img src={imageUrl} alt="A cute cat" className='rounded'></img>
+       </Modal>
 
           {/* Voting Buttons Container */}
              <div className="flex gap-6  justify-center">

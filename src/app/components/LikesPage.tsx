@@ -14,7 +14,7 @@ interface Like{
     };
 }
 
-const LikeDisplay: React.FC= ()=>{
+const LikePage: React.FC= ()=>{
     const {data:session,status}= useSession();
     const [likes,setLikes] = useState<Like[]>([]);
     const [loading,setLoading] = useState(true);
@@ -70,23 +70,25 @@ const LikeDisplay: React.FC= ()=>{
     }
 
     return(
-        <div className='container mx-auto p-4'>
-            <h2 className='text-2xl font-bold mb-4'>Your likes</h2>
-            <ul className='space-y-2'>
-                {
-                    likes.map((like)=>(
-                        <li key={like.id}>
-                            <Image
-                                src={like.image.url}
-                                alt={'Image'}
-                                width={300}
-                                height={300}
-                            />
-                        </li>
-                    ))
-                }
-            </ul>
+        <div className='border-red-500 flex flex-col  p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
+                <h2 className='text-2xl font-bold mb-4'>Your likes</h2>
+                <div className='grid grid-cols gap-4'>
+                    {
+                        likes.map((like)=>(
+                            // <div key={like.id}>
+                                <Image
+                                    src={like.image.url}
+                                    alt={'Image'}
+                                    width={300}
+                                    height={300}
+                                    className='border-2'
+                                />
+                            
+                        ))
+                    }
+                </div>
+            
         </div>
     );
 };
-export default LikeDisplay;
+export default LikePage;

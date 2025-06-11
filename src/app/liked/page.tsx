@@ -3,7 +3,7 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../lib/auth';
 import { prisma } from '../lib/prisma';
-import LikeDisplay from '../components/LikesDisplay';
+import LikePage from '../components/LikesPage';
 
 export default async function LikedImagesPage() {
   const session = await getServerSession(authOptions);
@@ -26,9 +26,9 @@ export default async function LikedImagesPage() {
      
           <div className="flex flex-col  p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
               <main className="items-center">
-                <div className="grid grid-cols-4 gap-4">
-                  <LikeDisplay></LikeDisplay>
-                </div>
+               
+                  <LikePage></LikePage>
+                
             </main>
           </div>
 

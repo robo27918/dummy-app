@@ -22,7 +22,7 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
 
     setVotedStatus(type);
     try{
-        let imageId = catId;
+       const imageId = catId;
        const res = await fetch('/api/like',{
         method:'POST',
         headers:{

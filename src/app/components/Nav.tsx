@@ -8,11 +8,11 @@ export default function Nav() {
   return (
     <nav className="bg-gray-800 text-white p-4 flex justify-between items-center">
       {/* Left Side - Navigation Links */}
-      <div className="flex gap-4">
+      {/* <div className="flex gap-4">
         <a href="/">Home</a>
         <a href="/gallery">Gallery</a>
         <a href="/about">About</a>
-      </div>
+      </div> */}
 
       {/* Right Side - Avatar */}
       <div className="relative">

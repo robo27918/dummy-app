@@ -3,7 +3,7 @@ import {getServerSession} from 'next-auth';
 import {authOptions} from '../../lib/auth';
 import {prisma} from '../../lib/prisma';
 
-export async function GET(req:NextRequest){
+export async function GET(){
     try{
         const session = await getServerSession(authOptions);
 
@@ -14,9 +14,9 @@ export async function GET(req:NextRequest){
         // const {searchParams} = new URL(req.url);
         // const userId = searchParams.get('userId')
 
-        let likes;
+        
         //Fetch the likes based on the authenticated user's ID
-        likes = await prisma.like.findMany({
+        const likes = await prisma.like.findMany({
             where:{
                 user:session?.user,
                 
@@ -30,7 +30,7 @@ export async function GET(req:NextRequest){
                 }
             }
         })
-        console.log("likes",likes);
+       
         return NextResponse.json(likes,{status:200});
     }catch(error){
         console.error("Error fetching likes",error);

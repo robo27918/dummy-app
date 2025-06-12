@@ -6,4 +6,6 @@
 
 6/11/2025
 [x] 1.fix the modal so the picture is always centerd
-[ ] 2. add modal to 'My liked images' page..
+[x] 2. add modal to 'My liked images' page
+[] 3. Deploy to vercel and fix any issues relating to deployment
+[]4. Research ways to cache images to prevent hitting API endpoint excessively

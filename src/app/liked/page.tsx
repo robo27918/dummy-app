@@ -2,7 +2,6 @@
 
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../lib/auth';
-import { prisma } from '../lib/prisma';
 import LikePage from '../components/LikesPage';
 
 export default async function LikedImagesPage() {

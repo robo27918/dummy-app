@@ -5,4 +5,5 @@
 2. add modal (lighthouse) to make images larger
 
 6/11/2025
-[] 1.fix the modal so the picture is always centerd
+[x] 1.fix the modal so the picture is always centerd
+[ ] 2. add modal to 'My liked images' page..

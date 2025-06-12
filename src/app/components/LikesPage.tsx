@@ -2,6 +2,7 @@
 import React,{useEffect, useState} from 'react';
 import {useSession} from 'next-auth/react';
 import Image from 'next/image';
+import Modal from './Modal';
 
 interface Like{
     id:string;
@@ -19,6 +20,8 @@ const LikePage: React.FC= ()=>{
     const [likes,setLikes] = useState<Like[]>([]);
     const [loading,setLoading] = useState(true);
     const [error,setError] = useState<string|null>(null);
+    const [isModalOpen,setIsModalOpen] = useState(false);
+    const [modalUrl,setModalUrl] = useState<string|null>(null);
 
     useEffect(()=>{
         if(status === 'authenticated'){
@@ -59,6 +62,16 @@ const LikePage: React.FC= ()=>{
        
     },[status]);//Re-run when authentication status changes
 
+    const modalSetUp = (url:string)=>{
+        setIsModalOpen(true);
+        setModalUrl(url);
+    };
+
+    const tearDownModal = ()=>{
+        setModalUrl(null);
+        setIsModalOpen(false);
+    };
+    
     if(loading){
         return <div className="text-center py-4">Loading likes...</div>;
     }
@@ -85,13 +98,22 @@ const LikePage: React.FC= ()=>{
                                     h-auto overflow-hidden border-2 border-gray-300
                                     ease-in-out hover:scale-105 hover:shadow-xl
                                     max-w-[75%] h-auto'
+                                    onClick={()=>modalSetUp(like.image.url)}
                                 />
+
+                              
                             </div>
                             
                         ))
                     }
                 </div>
-            
+                {/* Modal should be opened outside of the for loop */}
+                {modalUrl &&
+                      <Modal className="max-w-[1200px] max-h-[85vh]" isOpen={isModalOpen} onClose={()=> setIsModalOpen(false)}>
+                    <img src={modalUrl} alt="A cute cat" className='rounded'></img>
+                </Modal> 
+                }
+             
         </div>
     );
 };

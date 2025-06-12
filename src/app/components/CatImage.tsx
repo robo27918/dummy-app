@@ -78,9 +78,16 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
           setImageUrl(null); // No image found
           setError("No cat image found.");
         }
-      } catch (err: any) {
-        console.error('Error fetching cat image:', err);
-        setError(err.message || "Failed to fetch cat image.");
+      } catch (err:unknown) {
+        if(err instanceof Error){
+          console.error('Error fetching cat image:', err);
+          setError(err.message);
+        }
+        else{
+          console.error("Unknown error:",err)
+          setError('Failed to fetch cat image')
+        }
+
       }
     };
 

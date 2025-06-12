@@ -12,14 +12,14 @@ export default async function LikedImagesPage() {
     return <div>Please sign in to view your liked images.</div>;
   }
 
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-    // include: {
-    //   Like: {
-    //     include: { Image: true },
-    //   },
-    // },
-  });
+  // const user = await prisma.user.findUnique({
+  //   where: { email: session.user.email },
+  //   // include: {
+  //   //   Like: {
+  //   //     include: { Image: true },
+  //   //   },
+  //   // },
+  // });
 
   return (
     <div>

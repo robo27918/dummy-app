@@ -67,10 +67,7 @@ const LikePage: React.FC= ()=>{
         setModalUrl(url);
     };
 
-    const tearDownModal = ()=>{
-        setModalUrl(null);
-        setIsModalOpen(false);
-    };
+ 
     
     if(loading){
         return <div className="text-center py-4">Loading likes...</div>;

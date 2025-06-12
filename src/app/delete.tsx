@@ -12,7 +12,7 @@ interface Like {
 }
 
 const LikesDisplay: React.FC = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const [likes, setLikes] = useState<Like[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

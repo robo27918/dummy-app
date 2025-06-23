@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import{FaHeart, FaTimes} from 'react-icons/fa'
 import {v4 as uuidv4} from 'uuid';
 import Modal from './Modal';
+import Image from 'next/image';
 interface CatImageProps{
     catId ?:string;
 }
@@ -99,19 +100,37 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
   }
 
   if (!imageUrl) {
-    return <div className="Apple text-lg font-bold ">Loading cat image...</div>;
+    // return <div className="Apple text-lg font-bold ">Loading cat image...</div>;
+    return <span className="animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent" />
+
   }
 
   return (
     <div className="flex-col justify-center items-center">
       <h2 className='Apple font-bold'>Number: {actualCatId}</h2>
-      <img src={imageUrl} alt="A cute cat" style={{ maxWidth: '75%', height: 'auto' }}
-       className='rounded-2xl relative w-full h-auto overflow-hidden border-2 border-gray-300
-       ease-in-out hover:scale-105 hover:shadow-xl' 
-       onClick={()=>setIsModalOpen(true)}/>
+      <Image
+        src={imageUrl}
+        alt="cute cat"
+        width={1200}
+        height={800}
+        style={{maxWidth:'75%', height:'auto '}}
+        className='rounded-2xl relative w-full h-auto overflow-hidden border-2 
+        border-gray-300 ease-in-out hover:scale-105 hover:shadow-xl'
+        onClick={()=>setIsModalOpen(true)}
+      />
 
-       <Modal className="max-w-[1200px] max-h-[85vh]" isOpen={isModalOpen} onClose={()=> setIsModalOpen(false)}>
-        <img src={imageUrl} alt="A cute cat" className='rounded'></img>
+
+       <Modal className="max-w-[1000px] max-h-[85vh]" isOpen={isModalOpen} onClose={()=> setIsModalOpen(false)}>
+          <div className="relative w-full h-[85vh] rounded">
+              <Image
+                  src={imageUrl}
+                  alt={"Cute cat"}
+                  fill
+                  style={{objectFit:'contain'}}
+                />
+          </div>
+        
+       
        </Modal>
 
           {/* Voting Buttons Container */}

@@ -107,7 +107,17 @@ const LikePage: React.FC= ()=>{
                 {/* Modal should be opened outside of the for loop */}
                 {modalUrl &&
                       <Modal className="max-w-[1200px] max-h-[85vh]" isOpen={isModalOpen} onClose={()=> setIsModalOpen(false)}>
-                    <img src={modalUrl} alt="A cute cat" className='rounded'></img>
+                        <div className="relative w-full h-[85vh] rounded">
+                            <Image
+                                src={modalUrl}
+                                alt={'Image'}
+                                fill
+                                className='rounded'
+                                style={{objectFit:'contain'}}
+
+                            />
+                        </div>
+                    {/* <img src={modalUrl} alt="A cute cat" className='rounded'></img> */}
                 </Modal> 
                 }
              

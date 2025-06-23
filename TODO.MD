@@ -9,3 +9,9 @@
 [x] 2. add modal to 'My liked images' page
 [] 3. Deploy to vercel and fix any issues relating to deployment
 []4. Research ways to cache images to prevent hitting API endpoint excessively
+
+6/12/2025
+[x] 1.continue deploying to vercel and fix any issues relating to deployment
+
+6/22/2025
+[x] Use Image component from Next for lazy loading purposes.

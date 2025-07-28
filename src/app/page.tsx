@@ -1,4 +1,3 @@
-import CatImage from "./components/CatImage";
 import CatGallery from "./components/CatGallery";
 import {v4 as uuidv4} from 'uuid';
 export default function Home() {

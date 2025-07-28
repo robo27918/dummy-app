@@ -2,7 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 import CatImage from './CatImage';
 import { fetchCats } from '../../../utils/fetchCats';
-
+import Spinner from './Spinner';
 type CatApiResponse = {
     id:string;
     url:string;
@@ -49,7 +49,7 @@ const CatGallery = ()=>{
          ))
         }
         <div ref={loaderRef} className="col-span-full text-center py-4 text-gray-500">
-            {isLoading ?'Loading more of them cats...':'Scroll to load more'}
+            {isLoading ?<Spinner/>:'Scroll to load more'}
         </div>
     </div>
     );

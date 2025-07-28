@@ -23,5 +23,8 @@
 [] Create CatGallery component to be able to fetch batch of images from CatAPI
 [] add Intersection Observer to be able to add infinite scroll
 
-7/26/2025
-[]Create CatGallery component and be able to fetch images in bulk
+7/27/2025
+[x]Create CatGallery component and be able to fetch images in bulk
+[x] add infinite scroll
+[ ] add better loading state UX
+7/2

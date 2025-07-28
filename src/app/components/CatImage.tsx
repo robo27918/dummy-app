@@ -6,8 +6,9 @@ import Modal from './Modal';
 import Image from 'next/image';
 interface CatImageProps{
     catId ?:string;
+    imageUrlFromParent?:string;
 }
-const CatImage: React.FC<CatImageProps> = ({catId}) => {
+const CatImage: React.FC<CatImageProps> = ({catId,imageUrlFromParent}) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [votedStatus,setVotedStatus] = useState<'liked'|'disliked'|null>(null);
@@ -50,6 +51,11 @@ const CatImage: React.FC<CatImageProps> = ({catId}) => {
   }
 
   useEffect(() => {
+    if(imageUrlFromParent){
+      setImageUrl(imageUrlFromParent);
+      console.log("set the url provided from parent...")
+      return;
+    }
     // Access the environment variable
     const apiKey: string | undefined = process.env.NEXT_PUBLIC_THE_CAT_API_KEY;
 

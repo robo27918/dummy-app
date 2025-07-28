@@ -3,6 +3,7 @@ import React,{useEffect, useState} from 'react';
 import {useSession} from 'next-auth/react';
 import Image from 'next/image';
 import Modal from './Modal';
+import Spinner from './Spinner';
 
 interface Like{
     id:string;
@@ -70,7 +71,7 @@ const LikePage: React.FC= ()=>{
  
     
     if(loading){
-        return <div className="text-center py-4">Loading likes...</div>;
+        return <Spinner/>;
     }
     if(error){
         return <div className='text-center py-4 text-red-500'>Error:{error}</div>;

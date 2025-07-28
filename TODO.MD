@@ -26,5 +26,7 @@
 7/27/2025
 [x]Create CatGallery component and be able to fetch images in bulk
 [x] add infinite scroll
-[ ] add better loading state UX
-7/2
+[x] add better loading state UX
+
+7/28/2025
+[] add Breed Info page to show all information about all the breeds

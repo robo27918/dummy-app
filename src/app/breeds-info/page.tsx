@@ -1,7 +1,9 @@
+'use client'
+import BreedCard from "../components/BreedCard"
 export default function BreedPage(){
     return(
         <div>
-            Breed Page in progress !
+            <BreedCard/>
         </div>
     )
 }

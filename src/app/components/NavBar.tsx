@@ -12,7 +12,7 @@ export default function NavBar() {
       <div className="text-lg font-bold">My App</div>
       <Link href="/">Gallery</Link>
       <Link href="/liked">My Liked Images</Link>
-      <Link href="/">Breeds Info</Link>
+      <Link href="/breeds-info">Breeds Info</Link>
       {status === "loading" ? (
         <div>Loading...</div>
       ) : session ? (

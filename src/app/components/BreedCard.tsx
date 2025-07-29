@@ -1,18 +1,30 @@
 import React,{useEffect,useState} from 'react'
+import CatImage from './CatImage'
+import InfoRow from './InfroRow'
 export default function BreedCard(){
+    
     return(
-        <div>
-            <h3>Breed:</h3>
-            <h3>Origin:</h3>
-            <h3>Description:</h3>
-            <h3>Life Span:</h3>
-            <h3>indoor:</h3>
-            <h3>adapatability:</h3>
-            <h3>affection level:</h3>
-            <h3>child freindly:</h3>
-            <h3>grooming:</h3>
-            <h3>intelligence:</h3>
-            <h3>hypoallergenic:</h3>
+        <div className="
+         rounded-xl shadow-md p-2
+         bg-white dark:bg-gray-800 border">
+
+            <div>
+                <CatImage/>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-col-2 
+                lg:grid-cols-3 gap-8 p-4">
+
+            
+                <div className='space-y-4'>
+                    <InfoRow label={"Breed:"} value={"fdfdfdfdfdfd"}></InfoRow>
+                    <InfoRow label={"Breed: "} value={"fdfdfdfdfdfdfd"}></InfoRow>
+                     <InfoRow label={"Breed: "} value={"fdfdfdfdfdfdfd"}></InfoRow>
+                    <InfoRow label={"Breed: "} value={"fdfdfdfdfdfdfd"}></InfoRow>
+                </div>
+            
+                 
+             </div>
+            
         </div>
     )
 }

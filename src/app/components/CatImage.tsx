@@ -113,7 +113,7 @@ const CatImage: React.FC<CatImageProps> = ({catId,imageUrlFromParent}) => {
 
   return (
     <div className="flex-col justify-center items-center">
-      <h2 className='Apple font-bold'>Number: {actualCatId}</h2>
+
       <Image
         src={imageUrl}
         alt="cute cat"

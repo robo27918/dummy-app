@@ -15,7 +15,7 @@ interface CatBreedResponse{
     shedding_level?:string;
     wiki_url?:string;
     hypoallergenic?:string;
-    ref_id?:string;
+    image:Record<string,string>;
 
 }
 interface BreedCardProps {
@@ -30,7 +30,11 @@ const BreedCard:React.FC<BreedCardProps>=({breed})=>{
          bg-white dark:bg-gray-800 border">
 
             <div>
-                <CatImage/>
+                <CatImage 
+                    key={breed.image.id}
+                    catId={breed.image.id}
+                    imageUrlFromParent={breed.image.url}
+                />
             </div>
             <div className="grid grid-cols-1 sm:grid-col-2 
                 lg:grid-cols-3 gap-8 p-4">

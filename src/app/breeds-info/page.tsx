@@ -15,7 +15,7 @@ type CatBreedResponse = {
     shedding_level?:string;
     wiki_url?:string;
     hypoallergenic?:string;
-    image?:[];
+    image?:Record<string,string>;
 }
 export default function BreedPage(){
         
@@ -29,8 +29,7 @@ export default function BreedPage(){
             const res: CatBreedResponse[] = await fetchBreeds();
             console.log("response from breeds page",res);
             setBreedInfo(res);
-         
-            // setBreedImg(res.reference_img_id);
+          
 
         }
         catch(err){
@@ -48,11 +47,11 @@ export default function BreedPage(){
         getBreeds()
     },[]);
 
-    console.log("From BreedPage!",breedInfo)
+    // console.log("From BreedPage!",breedInfo[0].id)
     return(
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
             {!loading && breedInfo.length>0 &&(
-                 <BreedCard breed={breedInfo[0]}/>
+                breedInfo.map((info,idx)=><BreedCard key={idx} breed={info}/>)
             )}
            
         </div>

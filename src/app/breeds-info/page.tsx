@@ -13,7 +13,7 @@ type CatBreedResponse = {
     energy_level?:string;
     intelligence?:string;
     shedding_level?:string;
-    wiki_url?:string;
+    wikipedia_url?:string;
     hypoallergenic?:string;
     image?:Record<string,string>;
 }

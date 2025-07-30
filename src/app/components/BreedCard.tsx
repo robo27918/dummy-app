@@ -13,7 +13,7 @@ interface CatBreedResponse{
     energy_level?:string;
     intelligence?:string;
     shedding_level?:string;
-    wiki_url?:string;
+    wikipedia_url?:string;
     hypoallergenic?:string;
     image?:Record<string,string>;
 
@@ -55,12 +55,16 @@ const BreedCard:React.FC<BreedCardProps>=({breed})=>{
                     <InfoRow label={"Temperment"} value={breed.temperament}></InfoRow>
                     <InfoRow label={"Adaptability"} value={breed.adaptability}></InfoRow>
                     <InfoRow label={"Hypoallergenic"} value={breed.hypoallergenic}></InfoRow>
-                    <InfoRow label={"Wiki"} value={breed.wiki_url}></InfoRow>
+                    
                     
                 </div>
             </div>
-            <div>
+             
+            <div className={colClass}>
                 <InfoRow label={"Description:"} value={breed.description}></InfoRow>
+                <InfoRow label={"Wiki"} 
+                    value={<a href={breed.wikipedia_url}>{breed.wikipedia_url}</a>}>
+                </InfoRow>
             </div>
         
         </div>

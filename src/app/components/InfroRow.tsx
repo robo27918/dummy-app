@@ -1,8 +1,8 @@
 'use client'
 import {useState,useEffect} from 'react';
 interface rowProps{
-    label:string,
-    value:string|number
+    label:string|undefined;
+    value:string|undefined;
 
 }
 

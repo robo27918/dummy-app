@@ -1,8 +1,29 @@
 import React,{useEffect,useState} from 'react'
 import CatImage from './CatImage'
 import InfoRow from './InfroRow'
-export default function BreedCard(){
-    
+
+interface CatBreedResponse{
+    name:string;
+    temperament?:string;
+    origin?:string;
+    description?:string;
+    life_span?:string;
+    adaptability?:string;
+    affection_level?:string;
+    energy_level?:string;
+    intelligence?:string;
+    shedding_level?:string;
+    wiki_url?:string;
+    hypoallergenic?:string;
+    ref_id?:string;
+
+}
+interface BreedCardProps {
+    breed:CatBreedResponse
+};
+
+const BreedCard:React.FC<BreedCardProps>=({breed})=>{
+    console.log("breed",breed)
     return(
         <div className="
          rounded-xl shadow-md p-2
@@ -16,10 +37,10 @@ export default function BreedCard(){
 
             
                 <div className='space-y-4'>
-                    <InfoRow label={"Breed:"} value={"fdfdfdfdfdfd"}></InfoRow>
-                    <InfoRow label={"Breed: "} value={"fdfdfdfdfdfdfd"}></InfoRow>
-                     <InfoRow label={"Breed: "} value={"fdfdfdfdfdfdfd"}></InfoRow>
-                    <InfoRow label={"Breed: "} value={"fdfdfdfdfdfdfd"}></InfoRow>
+                    <InfoRow label={"Breed:"} value={breed.name}></InfoRow>
+                    <InfoRow label={"Origin"} value={breed.origin}></InfoRow>
+                    <InfoRow label={"Intelligence:"} value={breed.intelligence}></InfoRow>
+                    <InfoRow label={"Life Span"} value={breed.life_span}></InfoRow>
                 </div>
             
                  
@@ -28,3 +49,4 @@ export default function BreedCard(){
         </div>
     )
 }
+export default BreedCard

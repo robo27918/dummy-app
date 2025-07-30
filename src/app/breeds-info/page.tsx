@@ -21,7 +21,7 @@ export default function BreedPage(){
         
     const [breedInfo,setBreedInfo] = useState<CatBreedResponse[]>([]);
     const [loading,setLoading] = useState(true);
-    const [error,setError] = useState<string|null>(null);
+    // const [error,setError] = useState<string|null>(null);
     //function to get all the breeds form theCatAPI
     console.log("from Cat Breeds page...")
     const getBreeds = async ()=>{
@@ -34,7 +34,7 @@ export default function BreedPage(){
         }
         catch(err){
             console.error("Error fetching breeds",err);
-            setError("Failed to load breeds.")
+           
         }
         finally{
              setLoading(false);
@@ -49,6 +49,9 @@ export default function BreedPage(){
 
     // console.log("From BreedPage!",breedInfo[0].id)
     return(
+        //  {error && (
+        //     <div>{error}</div>
+        //  )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
             {!loading && breedInfo.length>0 &&(
                 breedInfo.map((info,idx)=><BreedCard key={idx} breed={info}/>)

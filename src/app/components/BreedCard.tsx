@@ -1,4 +1,3 @@
-import React,{useEffect,useState} from 'react'
 import CatImage from './CatImage'
 import InfoRow from './InfroRow'
 
